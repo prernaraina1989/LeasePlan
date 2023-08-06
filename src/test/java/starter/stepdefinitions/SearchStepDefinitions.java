@@ -13,7 +13,7 @@ public class SearchStepDefinitions {
 
 
     @Steps
-    public ProductsAPI carsAPI;
+    public ProductsAPI productsAPI;
 
     @When("he calls endpoint {string}")
     public void heCallsEndpoint(String arg0) {
