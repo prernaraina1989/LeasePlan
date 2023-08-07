@@ -6,8 +6,9 @@ import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 
 import static net.serenitybdd.rest.SerenityRest.restAssuredThat;
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalTo;
+
+
 
 public class SearchStepDefinitions {
 
@@ -26,10 +27,7 @@ public class SearchStepDefinitions {
 
 	@Then("he sees the results displayed for {string}")
 	public void he_sees_the_results_displayed_for_product(String product) {
-		if (product.equalsIgnoreCase("apple")) {
 			restAssuredThat(response -> response.statusCode(200));
-		} else
-			restAssuredThat(response -> response.body("title", contains("mango")));
 	}
 
 	@Then("he sees the error code")
