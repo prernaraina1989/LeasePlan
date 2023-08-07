@@ -71,7 +71,7 @@ Under repository LeasePlan navigate to Actions tab, a workflow named Continuous 
 
 To see the report of last pipeline run, 
 
-click on latest commit "**Update SearchStepDefinitions.java to adjust positive negative scenarios**"
+click on latest commit or click on Run workflow on main branch to start the new build
 
 Click on report at the bottom of this page
 
