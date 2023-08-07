@@ -24,6 +24,7 @@ src
 
 ## Executing the tests
 To run the project, you can either just run the `CucumberTestSuite` test runner class, or run either `mvn clean verify` from the command line.
+
 The test results will be recorded in the `target/site/serenity` directory.
 
 ## Generating the reports
@@ -53,9 +54,13 @@ Since the Serenity reports contain aggregate information about all of the tests,
 ```
 # Generating reports via CICD pipeline
 Under .guthub/workflows, a pipeline.yml as been created which will do CI operations and build the code.
+
 The pipeline will automatically start when a new commit is added to the repository
+
 Link to Yaml : https://github.com/prernaraina1989/LeasePlan/blob/main/.github/workflows/pipeline.yml
+
 Below code snippet in the pipeline will generate the report via pipeline
+
 ```
 - uses: actions/upload-artifact@v3
         with:
@@ -63,10 +68,15 @@ Below code snippet in the pipeline will generate the report via pipeline
           path: target/site/serenity
 ```
 Under repository LeasePlan navigate to Actions tab, a workflow named Continuous Integration is created which contains all the workflow runs.
-To see the report of last piprline run, 
+
+To see the report of last pipeline run, 
+
 click on latest commit "**Update SearchStepDefinitions.java to adjust positive negative scenarios**"
+
 Click on report at the bottom of this page
+
 It will download the report in  zip file.
+
 Extract the zip file content and click on index.html which will show the execution report of the Serenity test cases
 
 ## Instructions
@@ -78,43 +88,48 @@ Extract the zip file content and click on index.html which will show the executi
    IDE - Eclipse/Intellij or anyother
   
   Goto https://github.com/prernaraina1989/LeasePlan
+  
   Click on Code with dropdown
+  
   Copy the https link and clone it using GIT in your local system
+  
   Now Open you project on IDE and run Maven command "mvn clean install"
+  
   Check if all required repositories are downloaded
 
 # How to Run
   To run the project, you can either just run the `CucumberTestSuite` test runner class, or run either `mvn clean verify` from the command line.
+  
 The test results will be recorded in the `target/site/serenity` directory
 
 # How to Write new Testcases
-1. Goto the get_product.feature file which can be found below
-   src
-  + main
-  + test
-    + java                        Test runners and supporting code
-    + resources
-      + features                  Feature files
-      + search                  Feature file subdirectories
-  In this file you can add your scenarios or you can create another feature file under same structure
-Make sure to give your scenario porperly name for reports purpose
-2.Now to add step definitions, go to the file SearchStepDefinitions.java which could be found below
-src
-  + main
-  + test
-    + java                        Test runners and supporting code
-      + starter
-        + stepdefinitions         step definition files
-  In this file you can add your stepsdefinations or you can create another stepdefinition file under same structure
-[Note: you need to update pom.xml accordingly if you are using any other dependencies]
+1. Goto the get_product.feature file which can be found in test/resources/feature/search
+   
+   In this file you can add your scenarios or you can create another feature file under same structure
+      
+    Make sure to give your scenario properly name for reports purpose
+
+
+2. Now to add step definitions, go to the file SearchStepDefinitions.java which could be found in test/java/starter/stepdefinitions 
+
+   In this file you can add your stepsdefinations or you can create another stepdefinition file under same structure
+
+   [Note: you need to update pom.xml accordingly if you are using any other dependencies]
+
+
 3. Now Run your project and check results
 
 # What was refactored in code
 Changes were made like - 
+
 1.Renaming of Method names in SearchStepDefinitions.java file according to the method name convention in java serenity cucumber framework
+
 2.Refactoring of code, to make it more readable
+
 3.Removing of unnecessary code to make it more readable
+
 5.Adding different scenarios to make report more presentable and readable
+
 4.Renaming of Feature file name to get_product.feature from post_product.feature, to make it clear what exactly we are doing in this feature file
 
 See [**this article**](https://johnfergusonsmart.com/environment-specific-configuration-in-serenity-bdd/) for more details about this feature.
