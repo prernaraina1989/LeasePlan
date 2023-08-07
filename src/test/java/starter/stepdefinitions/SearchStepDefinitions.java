@@ -11,35 +11,34 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class SearchStepDefinitions {
 
+	@Steps
+	public ProductsAPI productsAPI;
 
-    @Steps
-    public ProductsAPI productsAPI;
-
-    @When("he calls endpoint {string}")
-    public void heCallsEndpoint(String arg0) {
-        SerenityRest.given().get(arg0);
-    }
-
-	@Then("status code of endpoint is {string}") 
-	public void StatusCodeOfEndpoint(String status) { 
-		restAssuredThat(response -> response.statusCode(Integer.parseInt(status))); 
+	@When("he calls endpoint {string}")
+	public void he_calls_endpoint(String string) {
+		SerenityRest.given().get(string);
 	}
-	 
-    @Then("he sees the results displayed for {string}")
-    public void heSeesTheResultsDisplayedForProduct(String product) {
-    	if (product.equalsIgnoreCase("apple")){
-    		restAssuredThat(response -> response.statusCode(200));
-    	}
-    	else restAssuredThat(response -> response.body("title", contains("mango")));      
-    }
 
-    @Then("he sees the error code")
-    public void heSeesTheErrorCode() {
-    	restAssuredThat(response -> response.statusCode(404));
-    }
-   
-    @Then("he doesn not see the results")
-    public void heDoesnNotSeeTheResults() {
-        restAssuredThat(response -> response.body("detail.error", equalTo(true)));
-    }   
+	@Then("status code of endpoint is {string}")
+	public void status_code_of_endpoint(String status) {
+		restAssuredThat(response -> response.statusCode(Integer.parseInt(status)));
+	}
+
+	@Then("he sees the results displayed for {string}")
+	public void he_sees_the_results_displayed_for_product(String product) {
+		if (product.equalsIgnoreCase("apple")) {
+			restAssuredThat(response -> response.statusCode(200));
+		} else
+			restAssuredThat(response -> response.body("title", contains("mango")));
+	}
+
+	@Then("he sees the error code")
+	public void he_sees_the_error_code() {
+		restAssuredThat(response -> response.statusCode(404));
+	}
+
+	@Then("he does not see the results")
+	public void he_does_not_see_the_results() {
+		restAssuredThat(response -> response.body("detail.error", equalTo(true)));
+	}
 }
