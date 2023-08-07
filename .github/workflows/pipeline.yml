@@ -26,3 +26,8 @@ jobs:
         uses: GabrielBB/xvfb-action@v1
         with:
           run: mvn clean verify
+          
+      - uses: actions/upload-artifact@v3
+        with:
+          name: report
+          path: target/site/serenity
